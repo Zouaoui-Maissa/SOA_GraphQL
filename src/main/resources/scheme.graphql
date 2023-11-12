@@ -1,0 +1,40 @@
+type RendezVous{
+    id :Int
+    date: String
+    heure : String
+    logement: Logement
+    numTel : String
+}
+
+type Logement{
+    reference:Int
+    adresse:String
+    delegation:String
+    gouvernorat: String
+    type:Type
+    description:String
+    prix:Float
+}
+
+enum Type{
+    Studio
+    Appartement
+    EtageVilla
+}
+
+type Querries{
+    getRdvList: [RendezVous]
+    getLogement: [Logement]
+    getRendezVousById(id:Int):RendezVous
+}
+
+type Mutations{
+    addRDV(id:Int,  date:String,  heure:String,  refLog:Int,  num:String):Boolean
+    updateRDV(id:Int,  date:String,  heure:String,  refLog:Int,  num:String):Boolean
+    deleteRDV(id:Int):Boolean
+}
+schema {
+    query:Querries
+    mutation: Mutations
+}
+
